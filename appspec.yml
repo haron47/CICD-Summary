@@ -15,7 +15,7 @@ permissions:
 hooks:
   AfterInstall: # 파일이 도착 후 실행
     - location:
-      timeout: 60 # 60 안에 실행, 60 뒤엔 배포 실패로 변경
+      timeout: 70 # 60 안에 실행, 60 뒤엔 배포 실패로 변경
       runas: root
   ValidateService: # deploy-community 의 실행 후, 빌드파일이 배포가 되었다면, 서버체크
     - location:
