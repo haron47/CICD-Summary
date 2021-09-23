@@ -25,6 +25,8 @@ jobs:
       - name: npm 빌드
         run: npm run build
 
+      - uses: actions/checkout@v2
+
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@master
         with:
