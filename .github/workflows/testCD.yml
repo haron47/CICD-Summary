@@ -23,6 +23,6 @@ jobs:
           script: |
             pwd
             ls
-            # cd build && git pull
-            # npm install
-            # npm run build
+            cd build && git pull
+            npm install
+            npm run build
