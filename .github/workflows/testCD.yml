@@ -24,11 +24,11 @@ jobs:
 
       - name: npm 빌드
         run: npm run build
-    
+
       - name: zip 생성
-        run: zip -qq -r ./build.zip .
+        run: zip -r ./build.zip .
         shell: bash
-  
+
       - name: AWS 설정
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -38,4 +38,3 @@ jobs:
 
       - name: S3 업로드
         run: aws s3 cp --region ap-northeast-2 ./build.zip s3://aws-learner-code-deploy-bucket/client/build-fe.zip
-
