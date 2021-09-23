@@ -40,4 +40,4 @@ jobs:
         run: aws s3 cp --region ap-northeast-2 ./build.zip s3://aws-learner-code-deploy-bucket-haron/backend/build.zip
 
       - name: Code Deploy
-        run: aws deploy create-deployment --application-name EC2-S3-Deploy --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name dev --s3-location bucket=aws-learner-code-deploy-bucket-haron,bundleType=zip,key=server/build.zip
+        run: aws deploy create-deployment --application-name EC2-S3-Deploy --deployment-group-name dev --s3-location bucket=aws-learner-code-deploy-bucket-haron,bundleType=zip,key=server/build.zip
