@@ -25,19 +25,13 @@ jobs:
       - name: npm 빌드
         run: npm run build
 
-      - name: zip 생성
-        run: zip -r ./build.zip .
-        shell: bash
-
-      - name: AWS 설정
-        uses: aws-actions/configure-aws-credentials@v1
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@master
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
-
-      - name: S3 업로드
-        run: aws s3 cp --region ap-northeast-2 ./build.zip s3://aws-learner-code-deploy-bucket-haron/backend/build.zip
-
-      - name: Code Deploy
-        run: aws deploy create-deployment --application-name EC2-S3-Deploy --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name dev --s3-location bucket=aws-learner-code-deploy-bucket-haron,bundleType=zip,key=server/build.zip
+          host: ${{ secrets.REMOTE_IP }}
+          username: ${{ secrets.REMOTE_SSH_ID  }}
+          key: ${{ secrets.REMOTE_SSH_KEY }}
+          script: |
+            cd ${{ secrets.PATH }} && git pull
+            npm install
+            npm run build

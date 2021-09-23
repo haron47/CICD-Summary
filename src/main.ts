@@ -22,7 +22,7 @@ async function bootstrap() {
 
   console.log('testing CI');
   console.log('testing s3 업로드');
-  console.log('code deploy 다다시');
+  console.log('code deploy 다시');
   await app.listen(3000);
 }
 bootstrap();
