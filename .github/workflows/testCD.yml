@@ -23,6 +23,6 @@ jobs:
           script: |
             pwd
             ls
-            # cd ${{ secrets.PATH }} && git pull
+            # cd build && git pull
             # npm install
             # npm run build
