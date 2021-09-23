@@ -20,6 +20,7 @@ async function bootstrap() {
 
   app.use(cookieParser());
 
+  console.log('testing CI');
   await app.listen(3000);
 }
 bootstrap();
