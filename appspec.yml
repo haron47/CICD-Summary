@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ec2-user/codedeploy/ # 배포 파일 도착 폴더
+    destination: /home/ec2-user/codedeploy # 배포 파일 도착 폴더
     overwrite: yes
     # 이 설정을 해도 덮어써지지 않는 다는 말이 있는데 저는 일단 잘되서 사용중입니다.
     # 제대로 되지않는다면, 아래 hooks BeforeInstall 를 추가하여, 존재하는 파일을 삭제하는 방법이 있습니다
