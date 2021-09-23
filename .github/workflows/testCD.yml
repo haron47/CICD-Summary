@@ -26,7 +26,7 @@ jobs:
         run: npm run build
 
       - name: zip 생성
-        run: zip -r ./build.zip .
+        run: zip -r ./build.zip . -x ./node_modules ./dist .gitignore
         shell: bash
 
       - name: AWS 설정
