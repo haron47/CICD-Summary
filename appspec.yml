@@ -2,21 +2,8 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ec2-user/codedeploy # 배포 파일 도착 폴더
-    overwrite: yes
-    # 이 설정을 해도 덮어써지지 않는 다는 말이 있는데 저는 일단 잘되서 사용중입니다.
-    # 제대로 되지않는다면, 아래 hooks BeforeInstall 를 추가하여, 존재하는 파일을 삭제하는 방법이 있습니다
-permissions:
-  - object: /
-    pattern: '**' # 모든 파일의 권한 설정
-    owner: ec2-user
-    group: ec2-user
-
+    destination: /home/ec2-user/build
 hooks:
-  AfterInstall: # 파일이 도착 후 실행
-    - location:
-      timeout: 70 # 60 안에 실행, 60 뒤엔 배포 실패로 변경
+  ApplicationStart:
+    - location: scripts/start.sh
       runas: root
-  ValidateService: # deploy-community 의 실행 후, 빌드파일이 배포가 되었다면, 서버체크
-    - location:
-      timeout: 60
