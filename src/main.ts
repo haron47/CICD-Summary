@@ -21,6 +21,7 @@ async function bootstrap() {
   app.use(cookieParser());
 
   console.log('testing CI');
+  console.log('testing s3 업로드');
   await app.listen(3000);
 }
 bootstrap();
