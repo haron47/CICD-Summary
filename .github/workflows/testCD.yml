@@ -21,6 +21,6 @@ jobs:
           username: ${{ secrets.REMOTE_SSH_ID  }}
           key: ${{ secrets.REMOTE_SSH_KEY }}
           script: |
-            git pull https://github.com/mash-up-kr/node-11th-toy-hellTaBus.git develop
+            git pull
             npm install
             npm run build
