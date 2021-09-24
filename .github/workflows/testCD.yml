@@ -21,10 +21,6 @@ jobs:
           username: ${{ secrets.REMOTE_SSH_ID  }}
           key: ${{ secrets.REMOTE_SSH_KEY }}
           script: |
-            pwd
-            cd build 
-            pwd
-            git init 
-            git pull
+            git pull origin develop
             npm install
             npm run build
