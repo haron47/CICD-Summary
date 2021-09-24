@@ -23,5 +23,6 @@ jobs:
           script: |
             cd build
             git pull
-            npm install
+            cd node-11th-toy-hellTaBus
+            npm install 
             npm run build
