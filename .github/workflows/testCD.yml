@@ -24,6 +24,6 @@ jobs:
             pwd
             cd build 
             pwd
-            # git pull
-            # npm install
-            # npm run build
+            git pull
+            npm install
+            npm run build
