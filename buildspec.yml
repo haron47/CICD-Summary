@@ -1,6 +1,9 @@
 version: 0.2
 
 phases:
+  install:
+    runtime-versions:
+      nodejs: 12
   build:
     commands:
       - echo Build Starting on `date`
@@ -12,6 +15,7 @@ artifacts:
   files:
     - appspec.yml
     - dist
+    - package.json
   discard-paths: yes
 # cache:
 #   paths:
