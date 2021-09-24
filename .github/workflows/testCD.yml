@@ -1,27 +1,27 @@
-name: CD
-on:
-  push:
-    branches: [main]
+# name: CD
+# on:
+#   push:
+#     branches: [main]
 
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [14.x]
+# jobs:
+#   test:
+#     runs-on: ubuntu-latest
+#     strategy:
+#       matrix:
+#         node-version: [14.x]
 
-    steps:
-      - name: Copy repository
-        uses: actions/checkout@v2
+#     steps:
+#       - name: Copy repository
+#         uses: actions/checkout@v2
 
-      - name: executing remote ssh commands using password
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.REMOTE_IP }}
-          username: ${{ secrets.REMOTE_SSH_ID  }}
-          key: ${{ secrets.REMOTE_SSH_KEY }}
-          script: |
-            cd node-11th-toy-hellTaBus
-            git pull
-            npm install 
-            npm run build
+#       - name: executing remote ssh commands using password
+#         uses: appleboy/ssh-action@master
+#         with:
+#           host: ${{ secrets.REMOTE_IP }}
+#           username: ${{ secrets.REMOTE_SSH_ID  }}
+#           key: ${{ secrets.REMOTE_SSH_KEY }}
+#           script: |
+#             cd node-11th-toy-hellTaBus
+#             git pull
+#             npm install
+#             npm run build
