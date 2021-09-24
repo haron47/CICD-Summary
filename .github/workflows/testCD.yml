@@ -22,6 +22,8 @@ jobs:
           key: ${{ secrets.REMOTE_SSH_KEY }}
           script: |
             pwd
-            cd build && git pull
-            npm install
-            npm run build
+            cd build 
+            pwd
+            # git pull
+            # npm install
+            # npm run build
