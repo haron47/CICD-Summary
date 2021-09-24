@@ -21,8 +21,7 @@ jobs:
           username: ${{ secrets.REMOTE_SSH_ID  }}
           key: ${{ secrets.REMOTE_SSH_KEY }}
           script: |
-            cd build
+            cd build/node-11th-toy-hellTaBus
             git pull
-            cd node-11th-toy-hellTaBus
             npm install 
             npm run build
