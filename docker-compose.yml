@@ -1,0 +1,17 @@
+version: '3'
+services:
+  app:
+    restart: always
+    image: ssunnu/test-1 # goes to your repository on Docker Hub
+    build:
+      dockerfile: Dockerfile
+      context: .
+    container_name: 'app'
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - '3000:3000'
+
+volumes:
+  node_modules:
