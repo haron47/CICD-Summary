@@ -1,5 +1,5 @@
 # docker login
-docker login -u ssunnu -p testtesttest
+docker login -u <DOCKERHUB_USERNAME> -p <DOCKERHUB_PASSWORD>
 
 # pull docker image
 if [ "$DEPLOYMENT_GROUP_NAME" == "dev" ]

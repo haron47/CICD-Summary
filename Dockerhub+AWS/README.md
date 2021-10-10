@@ -1,12 +1,3 @@
-# NestJS
-
-## 🚀NestJS 설치 및 실행
-
-```
-npm i
-npm run start
-```
-
 ## 🏚CI / CD 아키텍쳐
 ![image](https://user-images.githubusercontent.com/66551410/135451992-e6d06f81-6a88-4e36-b76b-2df2449a3f95.png)
 
@@ -165,7 +156,7 @@ fi
 - CodeDeploy 가 EC2 상에서 실행할 쉘 스크립트
 ```
 # docker login
-docker login -u ssunnu -p testtesttest
+docker login -u <DOCKERHUB_USERNAME> -p <DOCKERHUB_PASSWORD>
 
 # pull docker image
 if [ "$DEPLOYMENT_GROUP_NAME" == "dev" ]

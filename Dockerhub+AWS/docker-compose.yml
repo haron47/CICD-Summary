@@ -2,7 +2,7 @@ version: '3'
 services:
   app:
     restart: always
-    image: ssunnu/test-1 # goes to your repository on Docker Hub
+    image: <DOCKERHUB_IMAGES>
     build:
       dockerfile: Dockerfile
       context: .
