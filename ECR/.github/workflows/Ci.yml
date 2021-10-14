@@ -1,8 +1,8 @@
 on:
   push:
-    branches: [master]
+    branches: [branchname]
   pull_request:
-    branches: [master]
+    branches: [branchname]
 
 name: Node Project `my-app` CI on ECR
 
