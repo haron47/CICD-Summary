@@ -1,10 +1,9 @@
 on:
   push:
-    branches: [branchname]
-  pull_request:
-    branches: [branchname]
+    branches:
+      - main
 
-name: Node Project `my-app` CI on ECR
+name: Deploy to Amazon ECS
 
 jobs:
   deploy:
@@ -13,7 +12,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v1
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -30,8 +29,8 @@ jobs:
         id: build-image
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          ECR_REPOSITORY: ECR리포지토리 이름
-          IMAGE_TAG: ${{ github.sha }}
+          ECR_REPOSITORY: <ecr-repository>
+          IMAGE_TAG: latest
         run: |
           # Build a docker container and
           # push it to ECR so that it can
@@ -39,18 +38,21 @@ jobs:
           docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
           echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+      - name: Download task definition
+        run: |
+          aws ecs describe-task-definition --task-definition taskdef --query taskDefinition > task-definition.json
       - name: Fill in the new image ID in the Amazon ECS task definition
         id: task-def
         uses: aws-actions/amazon-ecs-render-task-definition@v1
         with:
           task-definition: task-definition.json
-          container-name: 컨테이너이름
+          container-name: <container-name>
           image: ${{ steps.build-image.outputs.image }}
 
       - name: Deploy Amazon ECS task definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@v1
         with:
           task-definition: ${{ steps.task-def.outputs.task-definition }}
-          service: 서비스이름
-          cluster: 클러스터이름
+          service: <service-name>
+          cluster: <cluster-name>
           wait-for-service-stability: true
